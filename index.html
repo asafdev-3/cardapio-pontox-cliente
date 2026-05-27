@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Cardápio Ponto X</title>
+  <meta property="og:title" content="Cardápio Ponto X">
+  <meta property="og:description" content="Veja o cardápio completo do Ponto X em Várzea da Palma MG">
+  <meta property="og:image" content="./assets/logo.png">
+  <meta name="theme-color" content="#FFD000">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header class="header">
+    <img src="./assets/logo.png" class="logo" alt="Logo Ponto X">
+    <div>
+      <h1 id="restaurant-name">Ponto X</h1>
+      <p id="restaurant-city">Várzea da Palma - MG</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="categories" class="categories"></section>
+    <section id="menu" class="menu"></section>
+  </main>
+
+  <footer class="footer">
+    <button id="whatsapp-btn">💬 Pedir pelo WhatsApp</button>
+  </footer>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/supabase.js"></script>
+  <script src="./js/utils.js"></script>
+  <script src="./js/menu.js"></script>
+</body>
+</html>
