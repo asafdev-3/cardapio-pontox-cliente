@@ -12,6 +12,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
+
   <header class="header">
     <img src="./assets/logo.png" class="logo" alt="Logo Ponto X">
     <div>
@@ -26,8 +27,92 @@
   </main>
 
   <footer class="footer">
-    <button id="whatsapp-btn">💬 Pedir pelo WhatsApp</button>
+    <button id="whatsapp-btn">🍔 Fazer Pedido</button>
   </footer>
+
+  <!-- MODAL PRODUTO -->
+  <div id="product-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close-x" id="close-product-btn">✕</button>
+      <img id="product-img" class="modal-img" src="" alt="">
+      <h2 id="product-name"></h2>
+      <p id="product-description"></p>
+      <div id="product-price" class="modal-price"></div>
+      <div class="qty-controls">
+        <button id="minus-qty">−</button>
+        <span id="product-qty">1</span>
+        <button id="plus-qty">+</button>
+      </div>
+      <button id="add-product-btn" class="btn-primary">Adicionar ao Pedido</button>
+    </div>
+  </div>
+
+  <!-- MODAL FINALIZAÇÃO -->
+  <div id="order-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close-x" id="close-modal-btn">✕</button>
+      <h2>Seu Pedido</h2>
+      <div id="order-items"></div>
+
+      <div class="form-section">
+        <label class="form-label">Seu nome</label>
+        <input type="text" id="customer-name" placeholder="Ex: João Silva">
+      </div>
+
+      <div class="form-section">
+        <label class="form-label">Forma de pagamento</label>
+        <select id="payment-method">
+          <option value="">Selecione...</option>
+          <option value="PIX">PIX</option>
+          <option value="Cartão">Cartão</option>
+          <option value="Dinheiro">Dinheiro</option>
+        </select>
+      </div>
+
+      <div id="troco-box" class="form-section" style="display:none">
+        <label class="form-label">Troco para quanto?</label>
+        <input type="number" id="troco-valor" placeholder="Ex: 100" inputmode="numeric">
+      </div>
+
+      <div class="form-section">
+        <label class="form-label">Retirada ou entrega?</label>
+        <div class="delivery-toggle">
+          <button class="delivery-btn active" id="btn-retirada" onclick="setDelivery('Retirada')">Retirada</button>
+          <button class="delivery-btn" id="btn-entrega" onclick="setDelivery('Entrega')">Entrega</button>
+        </div>
+      </div>
+
+      <div id="address-box" style="display:none">
+        <div class="form-section">
+          <label class="form-label">Rua</label>
+          <input type="text" id="addr-rua" placeholder="Ex: Rua das Castanheiras">
+        </div>
+        <div class="form-row">
+          <div class="form-section">
+            <label class="form-label">Número</label>
+            <input type="text" id="addr-num" placeholder="Ex: 229" inputmode="numeric">
+          </div>
+          <div class="form-section">
+            <label class="form-label">Bairro</label>
+            <input type="text" id="addr-bairro" placeholder="Ex: Centro">
+          </div>
+        </div>
+        <div class="form-section">
+          <label class="form-label">Complemento (opcional)</label>
+          <input type="text" id="addr-comp" placeholder="Ex: Apto 2, Casa dos fundos">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <label class="form-label">Observações (opcional)</label>
+        <textarea id="obs" placeholder="Ex: Sem cebola, capricha no molho..." rows="2"></textarea>
+      </div>
+
+      <button id="finish-order-btn" class="btn-finish">
+        Enviar pedido pelo WhatsApp
+      </button>
+    </div>
+  </div>
 
   <script src="./js/config.js"></script>
   <script src="./js/supabase.js"></script>
