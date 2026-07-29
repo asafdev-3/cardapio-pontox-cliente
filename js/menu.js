@@ -24,18 +24,7 @@ async function loadRestaurant() {
   const slug = getSlug();
   const { data, error } = await supabaseClient
     .from("restaurants")
-    .select(`
-id,
-name,
-slug,
-phone,
-city,
-active,
-opening_time,
-closing_time,
-temporarily_closed,
-closure_message
-`)
+    .select("id, name, slug, phone, city, active")
     .eq("slug", slug)
     .eq("active", true)
     .single();
@@ -51,74 +40,6 @@ closure_message
   currentRestaurant = data;
   document.getElementById("restaurant-name").textContent = data.name;
   document.getElementById("restaurant-city").textContent = data.city || "";
-  updateRestaurantStatus();
-}
-
-function updateRestaurantStatus() {
-
-    const status = document.getElementById("restaurant-status");
-    const btn = document.getElementById("whatsapp-btn");
-
-    btn.disabled = false;
-
-    if (currentRestaurant.temporarily_closed) {
-
-        status.className = "restaurant-status status-closed";
-        status.textContent = currentRestaurant.closure_message || "Fechado temporariamente.";
-
-        btn.disabled = true;
-        return;
-    }
-
-    const agora = new Date();
-
-    const minutosAgora =
-        agora.getHours() * 60 + agora.getMinutes();
-
-    const [hAbertura, mAbertura] =
-        currentRestaurant.opening_time.split(":").map(Number);
-
-    const [hFechamento, mFechamento] =
-        currentRestaurant.closing_time.split(":").map(Number);
-
-    const abertura =
-        hAbertura * 60 + mAbertura;
-
-    const fechamento =
-        hFechamento * 60 + mFechamento;
-
-    let aberto;
-
-    if (fechamento < abertura) {
-
-        aberto =
-            minutosAgora >= abertura ||
-            minutosAgora <= fechamento;
-
-    } else {
-
-        aberto =
-            minutosAgora >= abertura &&
-            minutosAgora <= fechamento;
-
-    }
-
-    if (aberto) {
-
-        status.className = "restaurant-status status-open";
-        status.textContent =
-            `🟢 Aberto • Fecha às ${currentRestaurant.closing_time}`;
-
-    } else {
-
-        status.className = "restaurant-status status-closed";
-        status.textContent =
-            `🔴 Fechado • Abre às ${currentRestaurant.opening_time}`;
-
-        btn.disabled = true;
-
-    }
-
 }
 
 async function loadCategories() {
