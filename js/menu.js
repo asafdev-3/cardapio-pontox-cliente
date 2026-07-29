@@ -24,7 +24,18 @@ async function loadRestaurant() {
   const slug = getSlug();
   const { data, error } = await supabaseClient
     .from("restaurants")
-    .select("id, name, slug, phone, city, active")
+    .select(`
+id,
+name,
+slug,
+phone,
+city,
+active,
+opening_time,
+closing_time,
+temporarily_closed,
+closure_message
+`)
     .eq("slug", slug)
     .eq("active", true)
     .single();
@@ -40,6 +51,73 @@ async function loadRestaurant() {
   currentRestaurant = data;
   document.getElementById("restaurant-name").textContent = data.name;
   document.getElementById("restaurant-city").textContent = data.city || "";
+  updateRestaurantStatus();
+}
+
+function updateRestaurantStatus(){
+
+    const status =
+        document.getElementById("restaurant-status");
+
+    if(currentRestaurant.temporarily_closed){
+
+        status.className =
+            "restaurant-status status-closed";
+
+        status.innerHTML =
+            `🔴 ${currentRestaurant.closure_message}`;
+
+        document
+            .getElementById("whatsapp-btn")
+            .disabled = true;
+
+        return;
+
+    }
+
+    const now = new Date();
+
+    const current =
+        now.getHours()*60 + now.getMinutes();
+
+    const [oh,om] =
+        currentRestaurant.opening_time.split(":");
+
+    const [ch,cm] =
+        currentRestaurant.closing_time.split(":");
+
+    const open =
+        Number(oh)*60 + Number(om);
+
+    const close =
+        Number(ch)*60 + Number(cm);
+
+    const opened =
+        current >= open &&
+        current <= close;
+
+    if(opened){
+
+        status.className =
+            "restaurant-status status-open";
+
+        status.innerHTML =
+            `🟢 Aberto • Fecha às ${currentRestaurant.closing_time}`;
+
+        return;
+
+    }
+
+    status.className =
+        "restaurant-status status-closed";
+
+    status.innerHTML =
+        `🔴 Fechado • Abre às ${currentRestaurant.opening_time}`;
+
+    document
+        .getElementById("whatsapp-btn")
+        .disabled = true;
+
 }
 
 async function loadCategories() {
