@@ -465,3 +465,23 @@ h1 {
 .btn-finish:active { opacity: .85; }
 
 .hidden { display: none !important; }
+
+.restaurant-status{
+
+    margin-top:8px;
+    font-size:.85rem;
+    font-weight:600;
+
+}
+
+.status-open{
+
+    color:#2ecc71;
+
+}
+
+.status-closed{
+
+    color:#ff4d4d;
+
+}
