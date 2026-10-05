@@ -6,7 +6,7 @@
   <title>Cardápio | Dr. Espeto</title>
   <meta property="og:title" content="Cardápio Dr. Espeto">
   <meta property="og:description" content="Veja o cardápio do Dr. Espeto em Várzea da Palma MG">
-  <meta property="og:image" content="./assets/logo.png">
+  <meta property="og:image" content="./assets/logo-dr-espeto.svg">
   <meta name="theme-color" content="#C9A84C">
   <link rel="stylesheet" href="./css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -14,7 +14,7 @@
 <body>
 
   <header class="header">
-    <img src="./assets/logo.png" class="logo" alt="Logo Dr. Espeto">
+    <img src="./assets/logo-dr-espeto.svg" class="logo" alt="Logo Dr. Espeto">
     <div>
       <h1 id="restaurant-name">Dr. Espeto</h1>
       <p id="restaurant-city">Várzea da Palma - MG</p>    
@@ -30,7 +30,6 @@
     <button id="whatsapp-btn">🍢 Fazer Pedido</button>
   </footer>
 
-  <!-- MODAL PRODUTO -->
   <div id="product-modal" class="modal hidden">
     <div class="modal-content">
       <button class="modal-close-x" id="close-product-btn">✕</button>
@@ -47,7 +46,6 @@
     </div>
   </div>
 
-  <!-- MODAL FINALIZAÇÃO -->
   <div id="order-modal" class="modal hidden">
     <div class="modal-content">
       <button class="modal-close-x" id="close-modal-btn">✕</button>
@@ -108,9 +106,7 @@
         <textarea id="obs" placeholder="Ex: Sem cebola, capricha no molho..." rows="2"></textarea>
       </div>
 
-      <button id="finish-order-btn" class="btn-finish">
-        Enviar pedido pelo WhatsApp
-      </button>
+      <button id="finish-order-btn" class="btn-finish">Enviar pedido pelo WhatsApp</button>
     </div>
   </div>
 
@@ -118,5 +114,15 @@
   <script src="./js/supabase.js"></script>
   <script src="./js/utils.js"></script>
   <script src="./js/menu.js"></script>
+  <script>
+    const demoBrandTimer = setInterval(() => {
+      if (typeof currentRestaurant !== 'undefined' && currentRestaurant) {
+        currentRestaurant.name = 'Dr. Espeto';
+        const nameEl = document.getElementById('restaurant-name');
+        if (nameEl) nameEl.textContent = 'Dr. Espeto';
+        clearInterval(demoBrandTimer);
+      }
+    }, 100);
+  </script>
 </body>
 </html>
