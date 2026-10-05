@@ -114,6 +114,7 @@
     const params = new URLSearchParams(location.search);
     const demoBrand = params.get('demo');
     const isBobsDemo = demoBrand === 'bobs';
+    const isTropicalDemo = demoBrand === 'tropical';
 
     if (isBobsDemo) {
       document.title = "Cardápio | Bob's Burgue";
@@ -123,6 +124,21 @@
       document.getElementById('brand-logo').src = './assets/logo-bobs.svg';
       document.getElementById('brand-logo').alt = "Logo Bob's Burgue";
       document.getElementById('restaurant-name').textContent = "Bob's Burgue";
+    }
+
+    if (isTropicalDemo) {
+      document.title = "Cardápio | Tropical Açaí e Lanches";
+      document.querySelector('meta[property="og:title"]').setAttribute('content', 'Cardápio Tropical Açaí e Lanches');
+      document.querySelector('meta[property="og:description"]').setAttribute('content', 'Açaí, sorvetes, lanches, macarrão na chapa e porções em Várzea da Palma - MG');
+      document.querySelector('meta[property="og:image"]').setAttribute('content', './assets/logo-tropical.svg');
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#7B1FA2');
+      document.documentElement.style.setProperty('--gold', '#F5C542');
+      document.documentElement.style.setProperty('--gold-light', '#FFE27A');
+      document.documentElement.style.setProperty('--gold-dark', '#B48A00');
+      document.documentElement.style.setProperty('--accent', '#7B1FA2');
+      document.getElementById('brand-logo').src = './assets/logo-tropical.svg';
+      document.getElementById('brand-logo').alt = 'Logo Tropical Açaí e Lanches';
+      document.getElementById('restaurant-name').textContent = 'Tropical Açaí e Lanches';
     }
   </script>
 
@@ -137,6 +153,11 @@
           currentRestaurant.name = "Bob's Burgue";
           document.getElementById('restaurant-name').textContent = "Bob's Burgue";
           document.getElementById('brand-logo').src = './assets/logo-bobs.svg';
+        } else if (isTropicalDemo) {
+          currentRestaurant.name = 'Tropical Açaí e Lanches';
+          currentRestaurant.phone = '5538998612551';
+          document.getElementById('restaurant-name').textContent = 'Tropical Açaí e Lanches';
+          document.getElementById('brand-logo').src = './assets/logo-tropical.svg';
         } else {
           currentRestaurant.name = 'Dr. Espeto';
           document.getElementById('restaurant-name').textContent = 'Dr. Espeto';
