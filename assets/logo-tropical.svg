@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Tropical Açaí e Lanches">
+  <rect width="512" height="512" rx="96" fill="#5B167A"/>
+  <circle cx="256" cy="256" r="204" fill="#7B1FA2" stroke="#F5C542" stroke-width="14"/>
+  <circle cx="256" cy="256" r="184" fill="#3B0B54" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="4"/>
+  <path d="M256 118c-30 0-54 20-62 46 27-6 48-1 62 12 14-13 35-18 62-12-8-26-32-46-62-46Z" fill="#46C46D"/>
+  <path d="M256 176c-43-9-76 2-98 32 36-4 66 4 88 25-10-21-6-41 10-57Zm0 0c43-9 76 2 98 32-36-4-66 4-88 25 10-21 6-41-10-57Z" fill="#46C46D"/>
+  <path d="M256 176v85" stroke="#F5C542" stroke-width="10" stroke-linecap="round"/>
+  <text x="256" y="317" text-anchor="middle" fill="#F5C542" font-family="Arial Black,Arial,sans-serif" font-size="64" font-weight="900" letter-spacing="-2">TROPICAL</text>
+  <text x="256" y="365" text-anchor="middle" fill="#FFFFFF" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" letter-spacing="3">AÇAÍ E LANCHES</text>
+  <path d="M170 398h172" stroke="#F5C542" stroke-width="5" stroke-linecap="round"/>
+</svg>
