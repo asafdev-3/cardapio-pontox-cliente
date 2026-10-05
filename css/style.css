@@ -2,8 +2,10 @@
 
 :root {
   --black: #0a0a0a;
-  --yellow: #FFD000;
-  --red: #D72B2B;
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dark: #A07830;
+  --accent: #8B0000;
   --text: #f5f0e8;
   --muted: #888;
   --card: #151515;
@@ -52,7 +54,7 @@ h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 36px;
   margin: 0;
-  color: var(--yellow);
+  color: var(--gold);
   line-height: 1;
 }
 
@@ -87,9 +89,9 @@ h1 {
   transition: all .15s;
 }
 .category-btn.active {
-  background: var(--yellow);
+  background: var(--gold);
   color: #000;
-  border-color: var(--yellow);
+  border-color: var(--gold);
 }
 
 /* ─── MENU ─── */
@@ -138,7 +140,7 @@ h1 {
 }
 
 .price {
-  color: var(--yellow);
+  color: var(--gold);
   font-weight: 700;
   font-size: 16px;
   display: block;
@@ -233,7 +235,7 @@ h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 1px;
-  color: var(--yellow);
+  color: var(--gold);
   margin: 0 0 16px;
   padding-right: 40px;
 }
@@ -250,7 +252,7 @@ h1 {
 .modal-price {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.6rem;
-  color: var(--yellow);
+  color: var(--gold);
   margin: 6px 0 16px;
 }
 
@@ -269,7 +271,7 @@ h1 {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: var(--yellow);
+  background: var(--gold);
   color: #000;
   font-weight: 700;
   font-size: 18px;
@@ -308,7 +310,7 @@ h1 {
 
 .order-item-qty {
   font-weight: 700;
-  color: var(--yellow);
+  color: var(--gold);
   flex-shrink: 0;
   font-size: 14px;
 }
@@ -343,7 +345,7 @@ h1 {
   cursor: pointer;
   transition: color .15s;
 }
-.order-item-remove:hover { color: var(--red); }
+.order-item-remove:hover { color: var(--accent); }
 
 .order-total-row {
   display: flex;
@@ -352,7 +354,7 @@ h1 {
   padding: 12px 0 16px;
   font-size: 18px;
   font-weight: 700;
-  color: var(--yellow);
+  color: var(--gold);
   border-top: 1px solid #2a2a2a;
   margin-top: 4px;
 }
@@ -394,7 +396,7 @@ h1 {
 .modal-content input:focus,
 .modal-content select:focus,
 .modal-content textarea:focus {
-  border-color: var(--yellow);
+  border-color: var(--gold);
 }
 
 .modal-content select option {
@@ -428,9 +430,9 @@ h1 {
 }
 
 .delivery-btn.active {
-  background: var(--yellow);
+  background: var(--gold);
   color: #000;
-  border-color: var(--yellow);
+  border-color: var(--gold);
 }
 
 /* ─── BOTÕES AÇÃO ─── */
@@ -438,7 +440,7 @@ h1 {
   width: 100%;
   padding: 15px;
   border-radius: 12px;
-  background: var(--yellow);
+  background: var(--gold);
   color: #000;
   font-weight: 700;
   font-size: 16px;
