@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Cardápio | Dr. Espeto</title>
   <meta property="og:title" content="Cardápio Dr. Espeto">
-  <meta property="og:description" content="Veja o cardápio do Dr. Espeto em Várzea da Palma MG">
+  <meta property="og:description" content="Veja o cardápio em Várzea da Palma MG">
   <meta property="og:image" content="./assets/logo-dr-espeto.svg">
   <meta name="theme-color" content="#C9A84C">
   <link rel="stylesheet" href="./css/style.css">
@@ -14,10 +14,10 @@
 <body>
 
   <header class="header">
-    <img src="./assets/logo-dr-espeto.svg" class="logo" alt="Logo Dr. Espeto">
+    <img id="brand-logo" src="./assets/logo-dr-espeto.svg" class="logo" alt="Logo">
     <div>
       <h1 id="restaurant-name">Dr. Espeto</h1>
-      <p id="restaurant-city">Várzea da Palma - MG</p>    
+      <p id="restaurant-city">Várzea da Palma - MG</p>
     </div>
   </header>
 
@@ -27,7 +27,7 @@
   </main>
 
   <footer class="footer">
-    <button id="whatsapp-btn">🍢 Fazer Pedido</button>
+    <button id="whatsapp-btn">🍔 Fazer Pedido</button>
   </footer>
 
   <div id="product-modal" class="modal hidden">
@@ -83,21 +83,21 @@
       <div id="address-box" style="display:none">
         <div class="form-section">
           <label class="form-label">Rua</label>
-          <input type="text" id="addr-rua" placeholder="Ex: Rua das Castanheiras">
+          <input type="text" id="addr-rua" placeholder="Rua">
         </div>
         <div class="form-row">
           <div class="form-section">
             <label class="form-label">Número</label>
-            <input type="text" id="addr-num" placeholder="Ex: 229" inputmode="numeric">
+            <input type="text" id="addr-num" placeholder="Número" inputmode="numeric">
           </div>
           <div class="form-section">
             <label class="form-label">Bairro</label>
-            <input type="text" id="addr-bairro" placeholder="Ex: Centro">
+            <input type="text" id="addr-bairro" placeholder="Bairro">
           </div>
         </div>
         <div class="form-section">
           <label class="form-label">Complemento (opcional)</label>
-          <input type="text" id="addr-comp" placeholder="Ex: Apto 2, Casa dos fundos">
+          <input type="text" id="addr-comp" placeholder="Complemento">
         </div>
       </div>
 
@@ -110,6 +110,22 @@
     </div>
   </div>
 
+  <script>
+    const params = new URLSearchParams(location.search);
+    const demoBrand = params.get('demo');
+    const isBobsDemo = demoBrand === 'bobs';
+
+    if (isBobsDemo) {
+      document.title = "Cardápio | Bob's Burgue";
+      document.querySelector('meta[property="og:title"]').setAttribute('content', "Cardápio Bob's Burgue");
+      document.querySelector('meta[property="og:description"]').setAttribute('content', "Hamburgueria artesanal, restaurante e marmitex em Várzea da Palma - MG");
+      document.querySelector('meta[property="og:image"]').setAttribute('content', './assets/logo-bobs.svg');
+      document.getElementById('brand-logo').src = './assets/logo-bobs.svg';
+      document.getElementById('brand-logo').alt = "Logo Bob's Burgue";
+      document.getElementById('restaurant-name').textContent = "Bob's Burgue";
+    }
+  </script>
+
   <script src="./js/config.js"></script>
   <script src="./js/supabase.js"></script>
   <script src="./js/utils.js"></script>
@@ -117,9 +133,14 @@
   <script>
     const demoBrandTimer = setInterval(() => {
       if (typeof currentRestaurant !== 'undefined' && currentRestaurant) {
-        currentRestaurant.name = 'Dr. Espeto';
-        const nameEl = document.getElementById('restaurant-name');
-        if (nameEl) nameEl.textContent = 'Dr. Espeto';
+        if (isBobsDemo) {
+          currentRestaurant.name = "Bob's Burgue";
+          document.getElementById('restaurant-name').textContent = "Bob's Burgue";
+          document.getElementById('brand-logo').src = './assets/logo-bobs.svg';
+        } else {
+          currentRestaurant.name = 'Dr. Espeto';
+          document.getElementById('restaurant-name').textContent = 'Dr. Espeto';
+        }
         clearInterval(demoBrandTimer);
       }
     }, 100);
